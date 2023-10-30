@@ -101,6 +101,7 @@ const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
 const submitButton = document.getElementById("submit");
 const resultElement = document.getElementById("result");
+const restartButton = document.getElementById("restart");
 
 function loadQuestion() {
   const q = questions[currentQuestion];
@@ -111,6 +112,13 @@ function loadQuestion() {
     button.textContent = option;
     button.addEventListener("click", () => checkAnswer(option));
     optionsElement.appendChild(button);
+  });
+}
+
+function restart() {
+  restartButton.addEventListener("click", function () {
+    // Reinicia a página ao clicar no botão
+    location.reload();
   });
 }
 
@@ -133,6 +141,9 @@ function showResult() {
   optionsElement.style.display = "none";
   submitButton.style.display = "none";
   resultElement.textContent = `Você acertou ${score} de ${questions.length} questões.`;
+  restartButton.style.display = 'block'; // Exibe o botão de reinício
 }
 
 loadQuestion();
+restart();
+
